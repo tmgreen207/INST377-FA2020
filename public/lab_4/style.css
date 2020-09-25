@@ -1,7 +1,7 @@
 /*CSS*/
 
 body {
-  background: rgba(192, 152, 245, 0.8);
+  background: rgb(255, 0, 191);
   font-family: Arial, Helvetica, sans-serif;
   margin-right: auto;
   line-height: 1.5;
@@ -55,7 +55,7 @@ h3 {
 }
 
 .header {
-  background: rgba(248, 3, 138, 0.8);
+  background: rgb(255, 0, 191);
   color: #fff;
   display: flex;
   flex-direction: row;
