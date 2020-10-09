@@ -66,6 +66,9 @@
                     check.innerText = fruitbuttons[i];
                 }))
                 return fruitbuttons;
+
+                const checkboxfruit = document.querySelectorAll('.checkbox-list-label')
+                checkboxfruit.innerText = "Fruits";
             })
             .then((response) => {console.log(response)})
             .catch((err) => {
