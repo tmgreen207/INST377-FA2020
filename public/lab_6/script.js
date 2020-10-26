@@ -14,7 +14,7 @@ function range(int) {
     return arr;
   }
   
-  function sortFunction(a, b, key) {
+  function sortByKey(a, b, key) {
     if (a[key] < b[key]) {
       return -1;
     } if (a[key] > b[key]) {
@@ -43,16 +43,17 @@ function range(int) {
             const number = getRandomIntInclusive(0, 243);
             return fromServer[number];
         });
+        console.log(newArr2)
 
-        const reverseList = newArr2.sort((org, compare) => sortByKey(org, compare, 'name'));
+        const reverseList = newArr2.sort((org, compare) => sortByKey(compare, org, 'name'));
         const ul = document.createElement('ol');
         ul.className = 'flex-inner';
         $('form').prepend(ul);
 
         reverseList.forEach((el, i) => {
             const li = document.createElement('li');
-            $(li).append(`<input type = "checkbox" value = $ el.code id=$(el.code) />`)
-            $(li).append(`<label for = $ el.code > $ el.name </label>`);
+            $(li).append(`<input type="checkbox" value="${el.code}" id="${el.code}" />`)
+            $(li).append(`<label for="${el.code}" > ${el.name} </label>`);
             $(ul).append(li);
         });
 
