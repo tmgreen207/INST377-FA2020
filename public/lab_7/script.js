@@ -1,15 +1,25 @@
 function convertRestaurantsToCategories(restaurantList) {
+  console.log('testfunctionresturant');
   // process your restaurants here!
-  for (x = 1; x < categories.length; x++) {
-    for (i = 1; i < categories[x].length, i++) {
-        if (restaurantList == categories[x][i]) {
-            return categories[x]
-        }
-      }
+  const categoryArray = [];
+  const result = {};
+  for (let i = 0; i < restaurantList.length; i += 1) {
+    categoryArray.push(restaurantList[i].category);
+  }
+  for (let i = 0; i < categoryArray.length; i += 1) {
+    if (!result[categoryArray[i]]) {
+      result[categoryArray[i]] = 0;
     }
+    result[categoryArray[i]] += 1;
+  }
+  const reply = Object.keys(result).map((category) => ({
+    y: result[category],
+    label: category
+  }));
+
+  console.log('reply', reply);
+  return reply;
 }
-
-
 
 function makeYourOptionsObject(datapointsFromRestaurantsList) {
   // set your chart configuration here!
@@ -21,12 +31,11 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     "#9c42f5",
     "#f5ce42"  
   ]);
-
-  return {
+  const canvasJSConfigObject ={
     animationEnabled: true,
     colorSet: 'customColorSet1',
     title: {
-      text: 'Change This Title'
+      text: 'Restaurants To Eat Out'
     },
     axisX: {
       interval: 1,
@@ -35,14 +44,33 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     axisY2: {
       interlacedColor: 'rgba(1,77,101,.2)',
       gridColor: 'rgba(1,77,101,.1)',
-      title: 'Change This Title',
+      title: 'Resturants by Category',
+      interval: 10,
+      maximum: 200,
       labelFontSize: 12,
-      scaleBreaks: {customBreaks: [
-        { startValue: 40, endValue: 50, color: "blue", type: "zigzag"},
-        { startValue: 85, endValue: 100, color: "blue", type: "zigzag" },
-        { startValue: 140, endValue: 175, color: "blue", type: "zigzag" }
-      ]} // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
-    },
+      scaleBreaks: {
+	      customBreaks: [{
+	             startValue: 40,
+	             endValue: 50,
+	             color: 'blue',
+	             type: 'zigzag'
+        },
+        {
+	             startValue: 85,
+	             endValue: 100,
+	             color: 'blue',
+	             type: 'wavy'
+        },
+        {
+          startValue: 140,
+          endValue: 175,
+          color: 'blue',
+          type: 'zigzag'
+        }]
+ 
+      },
+    }, // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
+    
     data: [{
       type: 'bar',
       name: 'restaurants',
@@ -50,9 +78,10 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
       dataPoints: datapointsFromRestaurantsList
     }]
   };
+  return canvasJSConfigObject;
 }
-
 function runThisWithResultsFromServer(jsonFromServer) {
+  console.log('testfunctionrunthiswithresultsfromserver');
   console.log('jsonFromServer', jsonFromServer);
   sessionStorage.setItem('restaurantList', JSON.stringify(jsonFromServer)); // don't mess with this, we need it to provide unit testing support
   // Process your restaurants list
@@ -76,8 +105,9 @@ document.body.addEventListener('submit', async (e) => {
     body: JSON.stringify(form)
   })
     .then((fromServer) => fromServer.json())
-    .then((jsonFromServer) => runThisWithResultsFromServer(jsonFromServer))
-    .catch((err) => {
-      console.log(err);
-    });
+    .then((jsonFromServer) => runThisWithResultsFromServer(jsonFromServer));
+  console.log('testfunctioneventlistener');
+  // .catch((err) => {
+  //   console.log(err);
+  // });
 });
