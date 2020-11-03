@@ -1,12 +1,25 @@
 function convertRestaurantsToCategories(restaurantList) {
   // process your restaurants here!
-  return list;
+  for (x = 1; x < categories.length; x++) {
+    for (i = 1; i < categories[x].length, i++) {
+        if (restaurantList == categories[x][i]) {
+            return categories[x]
+        }
+      }
+    }
 }
+
+
 
 function makeYourOptionsObject(datapointsFromRestaurantsList) {
   // set your chart configuration here!
   CanvasJS.addColorSet('customColorSet1', [
     // add an array of colors here https://canvasjs.com/docs/charts/chart-options/colorset/
+    "#f54266",
+    "#42f5e3",
+    "#42f542",
+    "#9c42f5",
+    "#f5ce42"  
   ]);
 
   return {
@@ -24,7 +37,11 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
       gridColor: 'rgba(1,77,101,.1)',
       title: 'Change This Title',
       labelFontSize: 12,
-      scaleBreaks: {customBreaks: []} // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
+      scaleBreaks: {customBreaks: [
+        { startValue: 40, endValue: 50, color: "blue", type: "zigzag"},
+        { startValue: 85, endValue: 100, color: "blue", type: "zigzag" },
+        { startValue: 140, endValue: 175, color: "blue", type: "zigzag" }
+      ]} // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
     },
     data: [{
       type: 'bar',
