@@ -31,11 +31,11 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     "#9c42f5",
     "#f5ce42"  
   ]);
-  const canvasJSConfigObject ={
+ return { 
     animationEnabled: true,
     colorSet: 'customColorSet1',
     title: {
-      text: 'Restaurants'
+      text: 'Places To Eat Out In Future'
     },
     axisX: {
       interval: 1,
@@ -44,9 +44,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     axisY2: {
       interlacedColor: 'rgba(1,77,101,.2)',
       gridColor: 'rgba(1,77,101,.1)',
-      title: 'Resturants',
-      interval: 10,
-      maximum: 200,
+      title: 'Resturants By Category',
       labelFontSize: 12,
       scaleBreaks: {
 	      customBreaks: [{
@@ -66,9 +64,9 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
           endValue: 175,
           color: 'blue',
           type: 'zigzag'
-        }]
+        }
  
-      },
+        ]}
     }, // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
     
     data: [{
@@ -78,7 +76,6 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
       dataPoints: datapointsFromRestaurantsList
     }]
   };
-  return canvasJSConfigObject;
 }
 function runThisWithResultsFromServer(jsonFromServer) {
   console.log('jsonFromServer', jsonFromServer);
@@ -104,8 +101,8 @@ document.body.addEventListener('submit', async (e) => {
     body: JSON.stringify(form)
   })
     .then((fromServer) => fromServer.json())
-    .then((jsonFromServer) => runThisWithResultsFromServer(jsonFromServer));
-  console.log('testfunctioneventlistener');
+    .then((jsonFromServer) => runThisWithResultsFromServer(jsonFromServer))
+  // console.log('testfunctioneventlistener');
   .catch((err) => {
   console.log(err);
   });
