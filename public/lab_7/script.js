@@ -45,6 +45,8 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
       interlacedColor: 'rgba(1,77,101,.2)',
       gridColor: 'rgba(1,77,101,.1)',
       title: 'Resturants By Category',
+      interval: 1,
+      maximum: 200,
       labelFontSize: 12,
       scaleBreaks: {
 	      customBreaks: [{
