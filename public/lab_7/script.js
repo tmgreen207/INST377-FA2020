@@ -89,7 +89,7 @@ function runThisWithResultsFromServer(jsonFromServer) {
   chart.render();
 }
 
-// Leave lines 52-67 alone; do your work in the functions above
+// Leave lines 52-67 alone;  do your work in the functions above
 document.body.addEventListener('submit', async (e) => {
   e.preventDefault(); // this stops whatever the browser wanted to do itself.
   const form = $(e.target).serializeArray();
