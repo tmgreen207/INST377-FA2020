@@ -35,7 +35,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     animationEnabled: true,
     colorSet: 'customColorSet1',
     title: {
-      text: 'Restaurants To Eat Out'
+      text: 'Restaurants'
     },
     axisX: {
       interval: 1,
@@ -81,7 +81,6 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
   return canvasJSConfigObject;
 }
 function runThisWithResultsFromServer(jsonFromServer) {
-  console.log('testfunctionrunthiswithresultsfromserver');
   console.log('jsonFromServer', jsonFromServer);
   sessionStorage.setItem('restaurantList', JSON.stringify(jsonFromServer)); // don't mess with this, we need it to provide unit testing support
   // Process your restaurants list
