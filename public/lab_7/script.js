@@ -57,7 +57,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
 	             startValue: 85,
 	             endValue: 100,
 	             color: 'blue',
-	             type: 'wavy'
+	             type: 'zigzag'
         },
         {
           startValue: 140,
@@ -102,7 +102,6 @@ document.body.addEventListener('submit', async (e) => {
   })
     .then((fromServer) => fromServer.json())
     .then((jsonFromServer) => runThisWithResultsFromServer(jsonFromServer))
-  // console.log('testfunctioneventlistener');
   .catch((err) => {
   console.log(err);
   });
